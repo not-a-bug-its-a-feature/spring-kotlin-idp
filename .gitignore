@@ -1,0 +1,65 @@
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### VSCode ###
+.vscode/
+
+### STS / Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### Mac ###
+.DS_Store
+
+### Logs ###
+*.log
+
+### Runtime ###
+*.pid
+*.seed
+*.pid.lock
+
+### Spring Boot ###
+/logs/
+/tmp/
+
+### Gradle ###
+.gradle/
+build/
+
+### Maven ###
+target/
+
+### Java ###
+*.class
+
+### Test Output ###
+/test-output/
+
+### Coverage ###
+/coverage/
+
+### Environment Files ###
+.env
+.env.*
+application-local.yml
+application-local.properties
+
+### OS ###
+Thumbs.db

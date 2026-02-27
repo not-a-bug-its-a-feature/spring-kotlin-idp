@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: idp
+
+jwt:
+  kid: "main-key-01"
+  private-key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDD...
+    -----END PRIVATE KEY-----
+  public-key: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAww...
+    -----END PUBLIC KEY-----
