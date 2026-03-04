@@ -38,10 +38,6 @@ dependencies {
 	implementation("org.opensaml:opensaml-saml-impl:4.3.2")
 	implementation("com.google.guava:guava:33.4.0-jre")
 
-//	jwt
-	implementation("io.jsonwebtoken:jjwt-api:0.12.6")
-	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
-	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
 
 //	redis
 	implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
