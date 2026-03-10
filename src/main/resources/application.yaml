@@ -3,12 +3,47 @@ spring:
     name: idp
 
 jwt:
-  kid: "main-key-01"
-  private-key: |
-    -----BEGIN PRIVATE KEY-----
-    MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDD...
-    -----END PRIVATE KEY-----
-  public-key: |
-    -----BEGIN PUBLIC KEY-----
-    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAww...
-    -----END PUBLIC KEY-----
+  issuer: dev-idp
+  audience: dev-api
+  key-id: key-01
+  keys:
+    key-01:
+      private-key: |
+        -----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD3M9qj8V+RaHcB
+        9dZYkTfLZNVVRFlE0YyqS/fWznuaCG2lLBVmOAXoJ1i8LojRxurx8WcN6i/K3PaY
+        tL6vhfVqlhK/SXxPxq8np5xpoE2mR7BfrpsbR9f7DmqDveoxu48UUfZo0fo0RKZr
+        N8BINU3CFAaj6MqFmoVoeAQMtk0iQF0EY50jYOEoTP0TO+cdLXx+3CX6X1cxZV8o
+        ZxC25f6/sOlne342XQI3/OQvPsvBLmvBxG29+rsoAhH2m6q+UpBAkLTlaX2Ujs33
+        cbGaVbL50DJBSSTXobHxPPH/FkOFxHlkRQAt2bQVWwtIg9Y9ycYzaO+F6DRKCVh0
+        07XHtcw5AgMBAAECggEAEy83H8XTur2qxGn8pY/+bexdFv+xo5jBqFaUG2RglNBu
+        j+vWXTjhBMWrMUR3pvN8MPmMXxMvmXrKE+g6u40qCMgfHdCqkfNNpJBWlAbIYW/W
+        2PASi6DPd7OJbRRqtD9h5pz50jdK5Zk90un0nLBKBPXn1HULICwhf66A1VpzwuNF
+        qmoeZaZX6mE6xPD58Ll35H5TADaBrZEcD3xKhsR4HIX66vepQP9enZ5bY3bT5iAG
+        wE8xmPKzW0fvkYlEYwH14r2raXIiQunlslqY5T2r8j04YfGLwRoTSesFiNUFDXL9
+        Beb5GsyhQOdE31x4n4t4WRPcNI0YvrFica8FWHZcQQKBgQD9gxYkWwaP42gnikI6
+        ih/7gToYtL6vhfVqlhK/SXxPxq8np5xpoE2mR7BfrpsbR9f7DmqDveoxu48UUfZo
+        0fo0RKZrN8BINU3CFAaj6MqFmoVoeAQMtk0iQF0EY50jYOEoTP0TO+cdLXx+3CX6
+        X1cxZV8oZxC25f6/sOlne342XQKBgQD5mXqQyV2pAonyz1ME3iAFH4x63HzlOAAb
+        YtL6vhfVqlhK/SXxPxq8np5xpoE2mR7BfrpsbR9f7DmqDveoxu48UUfZo0fo0RKZ
+        rN8BINU3CFAaj6MqFmoVoeAQMtk0iQF0EY50jYOEoTP0TO+cdLXx+3CX6X1cxZV8
+        oZxC25f6/sOlne342XQKBgQDFMUR3pvN8MPmMXxMvmXrKE+g6u40qCMgfHdCqkfNN
+        pJBWlAbIYW/W2PASi6DPd7OJbRRqtD9h5pz50jdK5Zk90un0nLBKBPXn1HULICwh
+        f66A1VpzwuNFqmoeZaZX6mE6xPD58Ll35H5TADaBrZEcD3xKhsR4HIX66vepQP9e
+        nQKBgF0EY50jYOEoTP0TO+cdLXx+3CX6X1cxZV8oZxC25f6/sOlne342XQI3/OQv
+        PsvBLmvBxG29+rsoAhH2m6q+UpBAkLTlaX2Ujs33cbGaVbL50DJBSSTXobHxPPH/
+        FkOFxHlkRQAt2bQVWwtIg9Y9ycYzaO+F6DRKCVh007XHtcw5AoGAC5GsyhQOdE31
+        x4n4t4WRPcNI0YvrFica8FWHZcQQEy83H8XTur2qxGn8pY/+bexdFv+xo5jBqFaU
+        G2RglNBuj+vWXTjhBMWrMUR3pvN8MPmMXxMvmXrKE+g6u40qCMgfHdCqkfNNpJBW
+        lAbIYW/W2PASi6DPd7OJbRRqtD9h5pz5
+        -----END PRIVATE KEY-----
+      public-key: |
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv0jzAm8h1Hn0pV3hokW2
+        rG5sGJPD7WvyaManIeZDV4xQdlqzTeWY5AvzkdxlIo0NGdisz8Iky3Uczdlz7YT1
+        kB4ezgmO6ijLJrVN6a8GN28AL5soMgqd7qV3CyMfCVxYvBy06SnVAk0nnk3uRlaR
+        qBPdZiZsaAJ+lZeX7IuAv89xDSHLVQQP4Jrped1IovnHgwlHGawEq+y3OC/YLXTr
+        ci9L5xRcmk6VwBEm90Lk9R/+qvOB0fOkH1ZZ1xd6QbaO5jM90oCbGyF/F7fs/3Mh
+        dh0dX8GZFODdgNpTiFqouBZfyqCkCmZJLdnOjFkMrDXLI4YAlnXrhIRbkIuAeGHN
+        NQIDAQAB
+        -----END PUBLIC KEY-----
