@@ -1,6 +1,7 @@
 package com.ltwrld.idp.infrastructure.security.jwt
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.ltwrld.idp.application.port.out.security.TokenVerifier
 import com.ltwrld.idp.domain.model.JwtHeader
 import com.ltwrld.idp.domain.model.TokenClaim
 import com.ltwrld.idp.infrastructure.crypto.Base64Url
@@ -14,9 +15,9 @@ class Rs256JwtVerifier(
     private val expectedIssuer: String,
     private val expectedAudience: String,
     private val clockSkewSeconds: Long = 30
-) {
+) : TokenVerifier {
 
-    fun verify(token: String): TokenClaim {
+    override fun verify(token: String) {
         val parts = token.split(".")
 
         if (parts.size != 3) throw MalformedJwtException()
@@ -70,7 +71,6 @@ class Rs256JwtVerifier(
 
         validateClaim(claim)
 
-        return claim
     }
 
     private fun validateClaim(claim: TokenClaim) {
