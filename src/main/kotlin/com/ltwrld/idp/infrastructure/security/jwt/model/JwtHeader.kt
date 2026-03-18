@@ -1,4 +1,4 @@
-package com.ltwrld.idp.domain.model
+package com.ltwrld.idp.infrastructure.security.jwt.model
 
 data class JwtHeader(
     val alg: String = "RS256",

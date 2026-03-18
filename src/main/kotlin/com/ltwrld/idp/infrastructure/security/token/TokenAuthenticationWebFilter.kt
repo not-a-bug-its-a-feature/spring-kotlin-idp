@@ -17,21 +17,44 @@ class TokenAuthenticationWebFilter(
     override fun filter(
         exchange: ServerWebExchange,
         chain: WebFilterChain
-    ): Mono<Void?> {
-        val authHeader = exchange.request.headers.getFirst("Authorization") ?: return chain.filter(exchange)
+    ): Mono<Void> {
 
-        val token = authHeader.removePrefix("Bearer ").trim()
+        val token = exchange.request.headers.getFirst("Authorization")
+            ?.takeIf {it.startsWith("Bearer ")}
+            ?.removePrefix("Bearer ")
+            ?.trim()
 
-        return try {
-            verifiers.forEach { it.verify(token) }
-            val authentication = UsernamePasswordAuthenticationToken("USER", null, emptyList())
-
-            chain.filter(exchange)
-                .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication))
-        } catch (e: Exception) {
-            exchange.response.statusCode = HttpStatus.UNAUTHORIZED
-            exchange.response.setComplete()
+        if (token == null) {
+            return chain.filter(exchange)
         }
 
+        val claim = verifiers
+            .asSequence()
+            .mapNotNull {
+                try {
+                    it.verify(token)
+                } catch (e: Exception) {
+                    //log
+                    null
+                }
+            }
+            .firstOrNull() ?: return unauthorized(exchange)
+
+        val auth = UsernamePasswordAuthenticationToken(
+            claim.sub,
+            token,
+            emptyList()
+        )
+        return chain.filter(exchange)
+            .contextWrite(
+                ReactiveSecurityContextHolder
+                    .withAuthentication(auth)
+            )
+
+    }
+
+    private fun unauthorized(exchange: ServerWebExchange): Mono<Void> {
+        exchange.response.statusCode = HttpStatus.UNAUTHORIZED
+        return exchange.response.setComplete()
     }
 }

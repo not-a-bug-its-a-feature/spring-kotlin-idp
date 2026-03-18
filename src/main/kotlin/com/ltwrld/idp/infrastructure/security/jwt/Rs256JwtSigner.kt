@@ -1,8 +1,8 @@
 package com.ltwrld.idp.infrastructure.security.jwt
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.ltwrld.idp.domain.model.JwtHeader
-import com.ltwrld.idp.domain.model.TokenClaim
+import com.ltwrld.idp.infrastructure.security.jwt.model.JwtHeader
+import com.ltwrld.idp.infrastructure.security.jwt.model.JwtPayload
 import com.ltwrld.idp.infrastructure.crypto.Base64Url
 import java.security.PrivateKey
 import java.security.Signature
@@ -13,7 +13,7 @@ class Rs256JwtSigner(
     private val keyId: String
 ) {
 
-    fun sign(claim: TokenClaim): String {
+    fun sign(claim: JwtPayload): String {
         val header = JwtHeader(kid = keyId)
 
         val headerJson = objectMapper.writeValueAsString(header)
